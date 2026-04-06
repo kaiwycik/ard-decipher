@@ -223,18 +223,18 @@ def decipher_train(
             plot_decipher_v(adata, basis="decipher_v", **plot_kwargs)
             gif_maker.add_image(plt.gcf())
             if is_notebook():
-                from IPython.core import display
+                from IPython.display import display, clear_output
 
-                display.clear_output(wait=True)
-                display.display(plt.gcf())
+                clear_output(wait=True)
+                display(plt.gcf())
             else:
                 plt.show()
             plt.close()
 
     if is_notebook():
-        from IPython.core import display
+        from IPython.display import clear_output
 
-        display.clear_output()
+        clear_output()
         pbar.display()
 
     if early_stopping.has_stopped():

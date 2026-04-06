@@ -65,13 +65,13 @@ def compute_basis_decomposition(
             break
 
         if plot_every_k_epochs > 0 and epoch % plot_every_k_epochs == 0:
-            from IPython.core import display
+            from IPython.display import display, clear_output
 
             basis = model._last_basis.detach().numpy()
             plt.figure(figsize=(5, 2.5))
             _plot_basis(basis)
-            display.clear_output(wait=True)
-            display.display(plt.gcf())
+            clear_output(wait=True)
+            display(plt.gcf())
             plt.close()
 
     model.return_basis = False
